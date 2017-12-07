@@ -1,0 +1,25 @@
+extends layout
+
+block css
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css")
+    link(rel="stylesheet" href="/css/landing.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" async)
+
+block header
+  .container
+        if (error != '')
+          .alert.alert-danger #{error}
+        if (success != '')
+          .alert.alert-success #{success}
+block main
+  #landing-header
+    h1 Welcome to YelpCamp!
+    a.btn.btn-lg.btn-success(href="/campgrounds") View All Campgrounds
+  ul.slideshow
+    li
+    li
+    li
+    li
+    li
+    
+    

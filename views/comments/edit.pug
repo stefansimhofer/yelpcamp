@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  .row.justify-content-center
+    .col-lg-6
+      h1 Edit Comment
+      form(action="/campgrounds/" + campground_id + "/comments/" + comment._id + "?_method=PUT" method="POST")
+        .form-group
+          textarea(class="form-control form-control-lg" type="text" name="comment[text]" placeholder="Text" rows="8") #{comment.text}
+        button(class="btn btn-primary btn-lg btn-block") Update Comment

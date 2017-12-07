@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .row
+    .col-md-3
+      p.lead #{campground.name}
+      ul(class="list-group")
+        li(class="list-group-item active") Cras justo odio
+        li(class="list-group-item") Dapibus ac facilisis in
+        li(class="list-group-item") Morbi leo risus
+    .col-md-9
+      .card
+        img(class="card-img-top" src=campground.image, alt=campground.name)
+        .card-body
+          if (currentUser && campground.author.id.equals(currentUser._id))
+            form(action="/campgrounds/" + campground._id + "?_method=DELETE" method="POST").float-right.ml-1.mt-2
+              button.btn.btn-danger.btn-sm Delete
+            a(href="/campgrounds/" + campground._id + "/edit").btn.btn-secondary.float-right.btn-sm.ml-2.mt-2 Edit
+          span.price.float-right.mt-2 $#{campground.price}/night
+          h1(class="card-title") #{campground.name}
+            
+          p(class="card-text") #{campground.description}
+          p.text-muted 
+            em Submitted by #{campground.author.username} on #{moment(campground.date).format("MMM Do YY")}
+        .card-footer  
+          .row
+            .col
+              a(class="btn btn-primary float-right" href=campground._id + "/comments/new") Leave a Comment
+          each comment in campground.comments.reverse()
+            .row
+              .col 
+                hr
+                if (currentUser && comment.author.id.equals(currentUser._id))
+                  form(action="/campgrounds/" + campground.id + "/comments/" + comment.id + "?_method=DELETE" method="POST").float-right.ml-1
+                    button.btn.btn-danger.btn-sm Delete
+                  a(href="/campgrounds/" + campground._id + "/comments/" + comment._id + "/edit").btn.btn-secondary.float-right.btn-sm.ml-2 Edit
+                p.comment-header 
+                  strong #{comment.author.username}
+                  span.float-right.text-muted
+                    em #{moment(comment.date).fromNow()}
+                p #{comment.text}
+                

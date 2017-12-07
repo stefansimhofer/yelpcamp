@@ -1,0 +1,17 @@
+.content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.campground {
+  margin-bottom: 2rem;
+}
+
+.price {
+  padding: 0.25rem;
+  font-weight: bold;
+}
+
+.comment-header {
+  padding: 0.25rem 0;
+}

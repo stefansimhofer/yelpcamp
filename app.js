@@ -9,6 +9,7 @@ const LocalStrategy = require('passport-local');
 const methodOverride = require('method-override');
 const moment = require('moment');
 const flash = require('connect-flash');
+const db = require('./db');
 
 const app = express();
 
@@ -16,12 +17,8 @@ const indexRoutes = require('./routes/index');
 const campgroundRoutes = require('./routes/campgrounds');
 const commentRoutes = require('./routes/comments');
 
-<<<<<<< HEAD
-mongoose.connect(process.env.DATABASE);
-=======
-mongoose.connect();
-mongoose.Promise = global.Promise;
->>>>>>> bab82d9c794f3b657789ea2d1312e4a6f9ad7326
+mongoose.connect(db, {useMongoClient: true});
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'pug');

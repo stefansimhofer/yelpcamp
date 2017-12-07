@@ -19,7 +19,6 @@ const commentRoutes = require('./routes/comments');
 
 mongoose.connect(db, {useMongoClient: true});
 
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
